@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form name="myform" method="post">
+  <input type="text" name="a" placeholder="input value"/>
+<input type="submit" value="submit"/>
+
+<script>
+var form = document.forms.myform,
+    elem = form.elements;
+
+form.onsubmit = function(){
+    if(!elem.a.value){
+        alert('Please input text.');
+        elem.a.focus();
+        return false;
+    }
+
+		var preprocess = elem.a.value.replace(/\s/g, '').toLowerCase();
+
+		if (preprocess === preprocess.split('').reverse().join('')){
+			alert('Yest is is. ' + elem.a.value + ' is palindrome!');
+			return false;
+		}
+		else{
+			alert('Sorry. Indeed ' + elem.a.value + ' is not palindrome.');
+			return false;
+		}
+}
+</script>
+
+</body>
+</html>
